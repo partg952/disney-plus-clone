@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.bbe97c43.chunk.css",
+    "main.js": "/static/js/main.ea894f34.chunk.js",
+    "main.js.map": "/static/js/main.ea894f34.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.2b201c1b.js",
+    "runtime-main.js.map": "/static/js/runtime-main.2b201c1b.js.map",
+    "static/js/2.4a29c574.chunk.js": "/static/js/2.4a29c574.chunk.js",
+    "static/js/2.4a29c574.chunk.js.map": "/static/js/2.4a29c574.chunk.js.map",
+    "static/js/3.6df163ff.chunk.js": "/static/js/3.6df163ff.chunk.js",
+    "static/js/3.6df163ff.chunk.js.map": "/static/js/3.6df163ff.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.bbe97c43.chunk.css.map": "/static/css/main.bbe97c43.chunk.css.map",
+    "static/js/2.4a29c574.chunk.js.LICENSE.txt": "/static/js/2.4a29c574.chunk.js.LICENSE.txt",
+    "static/media/cta-logo-one.1e2a5ccb.svg": "/static/media/cta-logo-one.1e2a5ccb.svg",
+    "static/media/cta-logo-two.e69ae552.png": "/static/media/cta-logo-two.e69ae552.png",
+    "static/media/favicon.b2167ed3.svg": "/static/media/favicon.b2167ed3.svg",
+    "static/media/login-background.05b1a1b3.jpg": "/static/media/login-background.05b1a1b3.jpg",
+    "static/media/logo.6ce24c58.svg": "/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2b201c1b.js",
+    "static/js/2.4a29c574.chunk.js",
+    "static/css/main.bbe97c43.chunk.css",
+    "static/js/main.ea894f34.chunk.js"
+  ]
+}
