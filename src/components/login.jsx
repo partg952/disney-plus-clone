@@ -6,8 +6,9 @@ import BackgroundImage from '../assets/login-background.jpg'
 import CTAicon from '../assets/cta-logo-one.svg'
 import Logo from '../assets/favicon.svg'
 import CTA2 from '../assets/cta-logo-two.png'
+import { useHistory } from 'react-router'
 export default function Login() {
-
+    const history = useHistory();
 
     const GoogleAuthProvider = new  firebase.auth.GoogleAuthProvider();
 
@@ -16,6 +17,7 @@ export default function Login() {
         .then((user)=>{
             alert('user signed in')
             console.log(user.user)
+            history.push('/home')
         }).catch((err)=>{
             console.log(err)
             alert('We Faced Some Error Please Try Again Later')
@@ -42,15 +44,15 @@ export default function Login() {
         padding: 10px;
         font-size: 16px;
         background-color: transparent;
+        transition: all 300ms ease;
+        &:hover{
+            background-color:white ;
+            color: black;
+        }
     }
     `
     const MainDiv = styled.div`
-
-    /* background-image: url(BackgroundImage);
-    height: 100%;
-    
-    width: 100%; */
-    margin-top: 60px;
+    margin-top: 30px;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -60,16 +62,18 @@ export default function Login() {
         width: 50%;
         min-width: 20%;
         @media only screen and (max-width: 970px){
-            width: 80%;
+            width: 90%;
+            height: 150px;
         }
     }
     #background-image{
         background-attachment: fixed;
         position: absolute;
-        height: 100%;
-        width: 1500px;
+        height: auto;
+        width: auto;
         left: 0;
         top: 0;
+        right: 0;
         bottom: 0;
         z-index: -1;
     }
@@ -97,23 +101,38 @@ export default function Login() {
         height: 50px;
         
         @media only screen and (max-width: 970px){
-            width: 80%;
+            width: 95%;
+            height: 30px;
         }
     }
+    `
+
+    const ImageDiv = styled.div`
+    position: absolute;
+    z-index: -100000000000;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-size: cover;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-image: url(${BackgroundImage});
     `
     return (
         <>
         <Nav>
         <img src='https://upload.wikimedia.org/wikipedia/commons/archive/3/3e/20210207182738%21Disney%2B_logo.svg' alt="" />
-        <button>LOGIN</button>
+        <button onClick={()=>signinuser(GoogleAuthProvider)}>LOGIN</button>
         </Nav>
+        <ImageDiv/>
         <MainDiv>
-            <img src={BackgroundImage} alt="" id='background-image' />
+            
             <img src={CTAicon} alt="" />
             <br />
             <button onClick={()=>signinuser(GoogleAuthProvider)}>GET ALL THERE</button>
-            <p>Get Premier Access to Raya and the Last Dragon for an additional fee with a Disney+ subscription.</p>
-            <p>As of 3/26/21 ,the price of Disney+ and The Disney Bundle will increase bt 51</p>
+            <p>Get Premier Access to Raya and the Last Dragon for an additional fee with a Disney+ subscription.
+            As of 3/26/21 ,the price of Disney+ and The Disney Bundle will increase by 51</p>
             <img src={CTA2} alt="" id='cta-logo2'/>
         </MainDiv>
         </>
