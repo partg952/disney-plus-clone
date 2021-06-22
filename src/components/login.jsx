@@ -4,7 +4,6 @@ import firebaseConfig from '../firebase'
 import styled from 'styled-components'
 import BackgroundImage from '../assets/login-background.jpg'
 import CTAicon from '../assets/cta-logo-one.svg'
-import Logo from '../assets/favicon.svg'
 import CTA2 from '../assets/cta-logo-two.png'
 import { useHistory } from 'react-router'
 export default function Login() {
