@@ -23,6 +23,9 @@ import MarvelVideo from '../assets/marvel-video.mp4'
 import NationalVideo from '../assets/geographic-video.mp4'
 import StarWarsVideo from '../assets/stars-wars-video.mp4'
 import PixarVideo from '../assets/pixar-video.mp4'
+import Recommends from './recommends';
+import New_Disney from './new-disney';
+import Originals from './originals';
 export default function Main() {
     const Background = styled.div`
     background-size: 100% 110%;
@@ -82,6 +85,7 @@ export default function Main() {
         &:hover{
             transform: scale(1.09);
             border-color: white;
+            box-shadow: 0px 5px 6px 2px black ;
             video{
                 visibility: visible;
             }
@@ -114,7 +118,7 @@ export default function Main() {
                 </button>
                 <button>
                     <img src={OriginalIcon} alt="" />
-                    <p>ORIGINALS</p>
+                    <a>ORIGINALS</a>
                 </button>
                 <button>
                     <img src={SeriesIcon} alt="" />
@@ -133,7 +137,7 @@ export default function Main() {
                     <p>WATCHLIST</p>
                 </button>
             </Nav>
-            <Carousel autoPlay='true' infiniteLoop='true' interval='3000' useKeyboardArrows='true' className='Carousel' >
+            <Carousel autoPlay='true' infiniteLoop='true' interval='3000' useKeyboardArrows='true' className='Carousel' transitionTime='2000'>
         <div>
         <img src={Image1} alt="" />
         </div>
@@ -182,6 +186,9 @@ export default function Main() {
                 <img src={DisneyImage} alt="" />
             </div>
         </Viewers>
+        <Recommends/>
+        <New_Disney/>
+        <Originals/>
 {/* <Background/> */}
         </div>
     )
