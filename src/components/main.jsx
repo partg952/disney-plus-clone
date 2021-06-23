@@ -13,7 +13,7 @@ import Image2 from '../assets/slider-badging.jpg'
 import Image3 from '../assets/slider-scales.jpg'
 import Image4 from '../assets/slider-scale.jpg'
 import { Carousel } from 'react-responsive-carousel';
-
+import MarvelImage from '../'
 
 export default function Main() {
     const Background = styled.div`
@@ -28,6 +28,7 @@ export default function Main() {
     const Nav = styled.nav`
     display: flex;
     align-items: center;
+    flex-wrap:wrap;
     
     button {
         letter-spacing: 1px;
@@ -48,6 +49,10 @@ export default function Main() {
         height: 30px;
         }
     }
+    `
+    const Viewers = styled.div`
+    display: flex;
+    flex-wrap: wrap;
     `
     return (
         <div>
@@ -93,6 +98,11 @@ export default function Main() {
         <img src={Image4} alt="" />
         </div>
             </Carousel>
+        <Viewers>
+            <div>
+                <img src="" alt="" />
+            </div>
+        </Viewers>
         </div>
     )
 }
