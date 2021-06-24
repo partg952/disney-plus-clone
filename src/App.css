@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-body{
+
+body {
   font-family: 'Roboto', sans-serif;
   overflow-x: hidden;
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
 
@@ -41,8 +43,35 @@ html{
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
 }
 
+#open-button {
+  letter-spacing: 1px;
+  font-family: 'Roboto', sans-serif;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  font-weight: 600;
+  
+  display: none;
+  color: white;
+  background-color: transparent;
+  border: 0;
+}
+
+@media only screen and (max-width: 970px) {
+  #open-button {
+    letter-spacing: 1px;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    font-weight: 600;
+    display: flex;
+    color: white;
+    background-color: transparent;
+    border: 0;
+  }
+}

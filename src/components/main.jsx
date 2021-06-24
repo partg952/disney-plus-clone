@@ -12,6 +12,7 @@ import Image1  from '../assets/slider-badag.jpg'
 import Image2 from '../assets/slider-badging.jpg'
 import Image3 from '../assets/slider-scales.jpg'
 import Image4 from '../assets/slider-scale.jpg'
+import {useRef} from 'react'
 import { Carousel } from 'react-responsive-carousel';
 import MarvelImage from '../assets/viewers-marvel.png'
 import PixarImage from '../assets/viewers-pixar.png'
@@ -26,7 +27,12 @@ import PixarVideo from '../assets/pixar-video.mp4'
 import Recommends from './recommends';
 import New_Disney from './new-disney';
 import Originals from './originals';
+import Hamburger from  '../assets/hamburger.svg'
+import MenuIcon from '@material-ui/icons/Menu';
 export default function Main() {
+    const Nav_Ref = useRef();
+    const Close_Button = useRef();
+    const Open_Button = useRef();
     const Background = styled.div`
     background-size: 100% 110%;
     background-image: url(${BackgroundImage});
@@ -43,6 +49,19 @@ export default function Main() {
     display: flex;
     align-items: center;
     flex-wrap:wrap;
+    #close-button{
+        display:none;
+    }
+    @media only screen and (max-width: 970px) {
+        display: block;
+        position: fixed;
+        background-color: black;
+        z-index:2;
+        height: 100%;
+        #close-button{
+            display: flex;
+        }
+    }
     
     button {
         letter-spacing: 1px;
@@ -61,6 +80,10 @@ export default function Main() {
         img{
 
         height: 30px;
+        }
+        .icon{
+            margin: 10px;
+            font-size: 25px;
         }
     }
     `
@@ -86,6 +109,7 @@ export default function Main() {
             transform: scale(1.09);
             border-color: white;
             box-shadow: 0px 5px 6px 2px black ;
+            pointer-events: painted;
             video{
                 visibility: visible;
             }
@@ -110,7 +134,7 @@ export default function Main() {
     `
     return (
         <div style={{backgroundImage:`url(${BackgroundImage})`}}>
-            <Nav>
+            <Nav ref={Nav_Ref}>
                 <img src="https://upload.wikimedia.org/wikipedia/commons/archive/3/3e/20210207182738%21Disney%2B_logo.svg" alt="" />
                 <button>
                     <img src={HomeIcon} alt="" />
@@ -136,7 +160,18 @@ export default function Main() {
                     <img src={WatchListIcon} alt="" />
                     <p>WATCHLIST</p>
                 </button>
+                <button id='close-button' ref={Close_Button} onClick={()=>{
+                    Nav_Ref.current.style.display = 'none'
+                }}>
+                    <MenuIcon className='icon' />
+                    <p>CLOSE</p>
+                </button>
             </Nav>
+            <button id='open-button' onClick={()=>{
+                Nav_Ref.current.style.display = 'block'
+            }}>
+                <MenuIcon/>                
+            </button>
             <Carousel autoPlay='true' infiniteLoop='true' interval='3000' useKeyboardArrows='true' className='Carousel' transitionTime='2000'>
         <div>
         <img src={Image1} alt="" />
