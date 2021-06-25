@@ -1,6 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
-export default function New_Disney() {
+import {useEffect,useState} from 'react'
+import axios from  'axios'
+import { div } from 'prelude-ls'
+export default function New_Disney({url}) {
+    const [movies,addMovies] = useState([])
+    console.log(movies)
+    useEffect(()=>{
+        async function GetMovies(){
+            const data = await axios(`https://api.themoviedb.org/3${url}`)
+            console.log(data.data)
+            addMovies(data.data.results)
+        }
+        GetMovies();
+    },[])
+
     const Container = styled.div`
     text-align: left;
     padding: 10px;
@@ -10,54 +24,66 @@ export default function New_Disney() {
     align-items: center;
     justify-content: space-around;
     display: flex;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    white-space:nowrap;
+    &::-webkit-scrollbar{
+            height: 10px;
+            background-color: transparent;
+        }
+        &::-webkit-scrollbar-thumb{
+            background-color: #ffffff76;
+            border-radius: 50px;
+            &:hover{
+                background-color:white;
+            }
+        }
     div{
+        
         box-shadow: 0px 5px 5px 1px black;
-        height: min-content;
-        position: relative;
-        margin-bottom: 20px;
+        display: inline-block;
         border-radius:10px;
         background-color: transparent;
         border: 3px solid ;
+        margin: 20px;
         align-items: center;
         justify-content: center;
         border-color: #ffffff6f;
         transition:all 300ms ease-in-out;
         overflow: hidden;
-        width: 250px;
-        height: 150px;
+        min-width: 200px;
+        height: 200px;
         &:hover{
             transform: scale(1.1);
             border-color: white;
             border-width: 3px;
+            opacity: 1;
         }
         img{
             margin-left: auto;
             margin-right: auto;
+            width: 100%;
             height: 100%;
-            width: auto;    
+            /* object-fit:cover ; */
         }
     }
     `
     return (
         <div>
             <Container>
-             New To Disney+
+            New to Disney+
             <br />
             <br />
-            <Wrap>
-                <div>
-                    <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fmarkhughes%2Ffiles%2F2015%2F06%2FINSIDE-OUT-18.jpg" alt="" />
-                </div>
-                <div>
-                    <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fmarkhughes%2Ffiles%2F2015%2F06%2FINSIDE-OUT-18.jpg" alt="" />
-                </div>
-                <div>
-                    <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fmarkhughes%2Ffiles%2F2015%2F06%2FINSIDE-OUT-18.jpg" alt="" />
-                </div>
-                <div>
-                    <img src="https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Fmarkhughes%2Ffiles%2F2015%2F06%2FINSIDE-OUT-18.jpg" alt="" />
-                </div>
+            <Wrap id='wrap-container'> 
+               {
+                   
+                movies.map((items)=>{
+                   return(
+                       <div>
+                           <img src={`https://image.tmdb.org/t/p/w500${items.poster_path}`} alt="" />
+                       </div>
+                   ) 
+                })
+                }
             </Wrap>
             </Container>
         </div>

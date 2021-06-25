@@ -30,6 +30,7 @@ import Originals from './originals';
 import Hamburger from  '../assets/hamburger.svg'
 import MenuIcon from '@material-ui/icons/Menu';
 export default function Main() {
+    let api_key = 'e1fa13c7e6a35b25826f92b2aea94264'
     const Nav_Ref = useRef();
     const Close_Button = useRef();
     const Open_Button = useRef();
@@ -44,11 +45,15 @@ export default function Main() {
     right: 0;
     z-index: -9999999;
     height: 100%;
+    
+    
     `
     const Nav = styled.nav`
     display: flex;
     align-items: center;
     flex-wrap:wrap;
+    transition: transform 300ms ease-in-out;
+    transform: translate(0px);
     #close-button{
         display:none;
     }
@@ -115,6 +120,7 @@ export default function Main() {
             }
         }
         video{
+
             object-fit: cover;
             visibility: hidden;
             top: 0;
@@ -161,14 +167,14 @@ export default function Main() {
                     <p>WATCHLIST</p>
                 </button>
                 <button id='close-button' ref={Close_Button} onClick={()=>{
-                    Nav_Ref.current.style.display = 'none'
+                    Nav_Ref.current.style.transform = 'translate(-300px)'
                 }}>
                     <MenuIcon className='icon' />
                     <p>CLOSE</p>
                 </button>
             </Nav>
             <button id='open-button' onClick={()=>{
-                Nav_Ref.current.style.display = 'block'
+                Nav_Ref.current.style.transform = 'translate(0px)'
             }}>
                 <MenuIcon/>                
             </button>
@@ -221,9 +227,9 @@ export default function Main() {
                 <img src={DisneyImage} alt="" />
             </div>
         </Viewers>
-        <Recommends/>
-        <New_Disney/>
-        <Originals/>
+        <Recommends url={`/discover/movie?api_key=${api_key}&with_genres=27`}/>
+        <New_Disney url={`/discover/movie?api_key=${api_key}&with_genres=28`}/>
+        <Originals url={`/discover/movie?api_key=${api_key}&with_genres=35`}/>
 {/* <Background/> */}
         </div>
     )
