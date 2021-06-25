@@ -14,16 +14,17 @@ export default function Originals({url}) {
         GetMovies();
     },[])
 
-    const Container = styled.div`
+    const Container = styled.div `
     text-align: left;
     padding: 10px;
     color: white;
     `
-    const Wrap = styled.div`
+  const Wrap = styled.div `
     align-items: center;
     justify-content: space-around;
     display: flex;
-    overflow-x: auto;
+    
+    flex-wrap: wrap;
     &::-webkit-scrollbar{
             height: 10px;
             background-color: transparent;
@@ -36,6 +37,7 @@ export default function Originals({url}) {
             }
         }
     div{
+        
         box-shadow: 0px 5px 5px 1px black;
         display: inline-block;
         border-radius:10px;
@@ -47,8 +49,8 @@ export default function Originals({url}) {
         border-color: #ffffff6f;
         transition:all 300ms ease-in-out;
         overflow: hidden;
-        min-width: 200px;
-        height: 200px;
+        width: 200px;
+        height: 250px;
         &:hover{
             transform: scale(1.1);
             border-color: white;
@@ -67,7 +69,7 @@ export default function Originals({url}) {
     return (
         <div>
             <Container>
-            Originals
+            <h1>Originals</h1>
             <br />
             <br />
             <Wrap>

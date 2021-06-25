@@ -1,31 +1,32 @@
 import React from 'react'
 import styled from 'styled-components'
-import {useEffect,useState} from 'react'
-import axios from  'axios'
-import { div } from 'prelude-ls'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
+import {div} from 'prelude-ls'
 export default function New_Disney({url}) {
-    const [movies,addMovies] = useState([])
-    console.log(movies)
-    useEffect(()=>{
-        async function GetMovies(){
-            const data = await axios(`https://api.themoviedb.org/3${url}`)
-            console.log(data.data)
-            addMovies(data.data.results)
-        }
-        GetMovies();
-    },[])
+  const [movies,
+    addMovies] = useState([])
+  console.log(movies)
+  useEffect(() => {
+    async function GetMovies() {
+      const data = await axios(`https://api.themoviedb.org/3${url}`)
+      console.log(data.data)
+      addMovies(data.data.results)
+    }
+    GetMovies();
+  }, [])
 
-    const Container = styled.div`
+  const Container = styled.div `
     text-align: left;
     padding: 10px;
     color: white;
     `
-    const Wrap = styled.div`
+  const Wrap = styled.div `
     align-items: center;
     justify-content: space-around;
     display: flex;
-    overflow-x: auto;
-    white-space:nowrap;
+    
+    flex-wrap: wrap;
     &::-webkit-scrollbar{
             height: 10px;
             background-color: transparent;
@@ -50,8 +51,8 @@ export default function New_Disney({url}) {
         border-color: #ffffff6f;
         transition:all 300ms ease-in-out;
         overflow: hidden;
-        min-width: 200px;
-        height: 200px;
+        width: 200px;
+        height: 250px;
         &:hover{
             transform: scale(1.1);
             border-color: white;
@@ -67,25 +68,23 @@ export default function New_Disney({url}) {
         }
     }
     `
-    return (
-        <div>
-            <Container>
-            New to Disney+
-            <br />
-            <br />
-            <Wrap id='wrap-container'> 
-               {
-                   
-                movies.map((items)=>{
-                   return(
-                       <div>
-                           <img src={`https://image.tmdb.org/t/p/w500${items.poster_path}`} alt="" />
-                       </div>
-                   ) 
-                })
-                }
-            </Wrap>
-            </Container>
-        </div>
-    )
+  return (
+    <div>
+      <Container>
+        <h1>New To Disney+</h1>
+        <br/>
+        <br/>
+        <Wrap id='wrap-container'>
+          {movies.map((items) => {
+            return (
+              <div>
+                <img src={`https://image.tmdb.org/t/p/w500${items.poster_path}`} alt=""/>
+              </div>
+            )
+          })
+}
+        </Wrap>
+      </Container>
+    </div>
+  )
 }

@@ -7,13 +7,6 @@ export default function Recommends({url}) {
     const [movies,addMovies] = useState([])
     console.log(movies)
     useEffect(()=>{
-        // axios('https://api.tvmaze.com/shows')
-        // .then((res)=>{
-        //     while(document.getElementById('wrap-container').firstChild){
-        //         document.getElementById('wrap-container').removeChild(document.getElementById('wrap-container').firstChild)
-        //     }
-        //     console.log(res.data)
-        //     addMovies(res.data)
             async function GetMovies(){
                 const data = await axios(`https://api.themoviedb.org/3${url}`)
                 console.log(data.data)
@@ -32,8 +25,7 @@ export default function Recommends({url}) {
     align-items: center;
     justify-content: space-around;
     display: flex;
-    overflow-x: auto;
-    white-space:nowrap;
+    flex-wrap: wrap;
     &::-webkit-scrollbar{
             height: 10px;
             background-color: transparent;
@@ -59,7 +51,8 @@ export default function Recommends({url}) {
         transition:all 300ms ease-in-out;
         overflow: hidden;
         min-width: 200px;
-        height: 200px;
+        max-width: 200px;
+        height: 250px;
         &:hover{
             transform: scale(1.1);
             border-color: white;
@@ -78,7 +71,7 @@ export default function Recommends({url}) {
     return (
         <div>
             <Container>
-            Recommended For You
+            <h1>Recommended For You</h1>
             <br />
             <br />
             <Wrap id='wrap-container'> 
